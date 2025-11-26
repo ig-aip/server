@@ -17,13 +17,7 @@ void server::start_accept(){
     acceptor.async_accept(*socket,
                           [socket, this](boost::system::error_code er){
                               if(!er){
-                                  std::chrono::time_point now = std::chrono::system_clock::now() + std::chrono::hours{3};
-                                  std::ostringstream ss;
-                                  ++counter;
-                                  ss << "[" << std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()).count()  << "] - " << counter <<": ";
-                                  const std::string fileName = ss.str();
-                                  std::cout << "CONGRATULATION SUCCSESSFULL SAVE TO FILE WITH NAME: " << fileName << std::endl;
-                                  auto filer = std::make_shared<FileReciver>(std::move(*socket), fileName);
+                                  auto filer = std::make_shared<FileReciver>(std::move(*socket));
                                   filer->start();
                               }else{
                                   std::cerr << "read error: " << er.message() <<'\n';

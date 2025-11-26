@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include "server.h"
 #include "thread"
+#include "tcpheader.h"
 
 int main(int argc, char *argv[])
 {

@@ -15,14 +15,18 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 
+
 add_executable(easy_files
   main.cpp
   server.h server.cpp
   constants.h
   filereciver.h filereciver.cpp
   asio.h
+  tcpheader.h tcpheader.cpp
+
 )
 target_link_libraries(easy_files Qt${QT_VERSION_MAJOR}::Core Boost::boost Boost::system ws2_32 mswsock )
+
 
 
 include(GNUInstallDirs)
